@@ -11,6 +11,13 @@ import { environment } from 'src/environments/environment';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminModule } from './admin/admin.module';
 import { NavbarComponent } from './navbar/navbar.component';
+import { SampleComponent } from './sample/sample.component';
+import { ModalService } from './services/modal.service';
+import { DomService } from './services/dom.service';
+import { DialogComponent } from './dialog/dialog.component';
+import { ExampleComponent } from './example/example.component';
+import { DialogModule } from './dialog/dialog.module';
+
 
 @NgModule({
   declarations: [
@@ -19,17 +26,26 @@ import { NavbarComponent } from './navbar/navbar.component';
     LoginComponent,
     HomeComponent,
     ProfileComponent,
-    NavbarComponent
+    NavbarComponent,
+    SampleComponent,
+    ExampleComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AdminModule
+    AdminModule,
+    DialogModule
   ],
   providers: [
     { provide: 'API_BASE_URL', useValue: environment.API_BASE_URL },
-    AuthService
+    AuthService,
+    ModalService,
+    DomService
+  ],
+  entryComponents: [
+    SampleComponent,
+    ExampleComponent
   ],
   bootstrap: [AppComponent]
 })

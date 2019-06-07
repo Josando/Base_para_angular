@@ -5,9 +5,7 @@
   <br />
   <a routerLink="/">Back</a>
 </p>
-
 <hr />
-
 <div *ngIf="isLoggedIn()">
   <button (click)="logout()">Logout</button>
 </div>
@@ -16,4 +14,5 @@
   <a routerLink="/signup">Signup</a>
   <br />
   <a routerLink="/login">Login</a>  
+  <button (click)="cargarModal()">ABRIR MODAL</button>
 </div>

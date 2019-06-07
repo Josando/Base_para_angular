@@ -1,5 +1,11 @@
 <app-navbar></app-navbar>
-<br/>
+<br />
 <router-outlet></router-outlet>
 <hr />
-<h1>HERE WE COULD PLACE A FOOTER</h1>
+<footer id="main-footer">
+    <h1>HERE WE COULD PLACE A FOOTER</h1>
+</footer>
+
+<!-- Custom modal setup -->
+<div id="modal-container" class="hidden"></div>
+<div id="overlay" (click)="removeModal()" class="hidden"></div> <!-- (click)="removeModal()" -->
