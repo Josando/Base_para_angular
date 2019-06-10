@@ -11,9 +11,6 @@ import { environment } from 'src/environments/environment';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminModule } from './admin/admin.module';
 import { NavbarComponent } from './navbar/navbar.component';
-import { SampleComponent } from './sample/sample.component';
-import { ModalService } from './services/modal.service';
-import { DomService } from './services/dom.service';
 import { DialogComponent } from './dialog/dialog.component';
 import { ExampleComponent } from './example/example.component';
 import { DialogModule } from './dialog/dialog.module';
@@ -28,7 +25,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     ProfileComponent,
     NavbarComponent,
-    SampleComponent,
     ExampleComponent
   ],
   imports: [
@@ -42,12 +38,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   providers: [
     { provide: 'API_BASE_URL', useValue: environment.API_BASE_URL },
-    AuthService,
-    ModalService,
-    DomService
+    AuthService
   ],
   entryComponents: [
-    SampleComponent,
     ExampleComponent
   ],
   bootstrap: [AppComponent]

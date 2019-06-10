@@ -20,12 +20,14 @@ export class DialogComponent implements AfterViewInit, OnDestroy {
    private readonly _onClose = new Subject<any>();
    public onClose = this._onClose.asObservable();
    public width: number;
+   public widthpx: number;
 
   childComponentType: Type<any>;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private cd: ChangeDetectorRef,
               private dialogRef: DialogRef, private config: DialogConfig, private renderer: Renderer2 ) {
-                this.width = config.width;
+                this.width = config.widthPer;
+                this.widthpx = config.widthpx;
             }
 
   ngAfterViewInit() {

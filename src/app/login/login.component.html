@@ -4,13 +4,13 @@
       <form [formGroup]="myForm" (submit)="saveData()" novalidate="">   <!-- (submit)="loginUser($event)" -->
         <input  formControlName="email" type="email" placeholder="Email" id="email" />
         <div *ngIf="myForm.get('email').errors && myForm.get('email').dirty">
-          <span *ngIf="myForm.get('email').hasError('required')">Email is required</span>
+          <span *ngIf="myForm.get('email').hasError('required')">El Email es requerido</span>
           <span *ngIf="myForm.get('email').hasError('pattern')">El formato de correo no es correcto</span>
         </div>
         <br />
         <input formControlName="password" type="password" placeholder="Password" id="password" />
         <div *ngIf="myForm.get('password').errors && myForm.get('password').dirty">
-          <span *ngIf="myForm.get('password').hasError('required')">Password is required</span>
+          <span *ngIf="myForm.get('password').hasError('required')">El Password es requerido</span>
           <span *ngIf="myForm.get('password').hasError('pattern')">6-10 caract.(A-Za-z0-9!?-)</span>
         </div><br /><br />
         <button [disabled]="myForm.invalid" type="submit"  value="Login">Login</button>
