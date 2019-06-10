@@ -17,6 +17,7 @@ import { DomService } from './services/dom.service';
 import { DialogComponent } from './dialog/dialog.component';
 import { ExampleComponent } from './example/example.component';
 import { DialogModule } from './dialog/dialog.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -35,7 +36,9 @@ import { DialogModule } from './dialog/dialog.module';
     AppRoutingModule,
     HttpClientModule,
     AdminModule,
-    DialogModule
+    DialogModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: 'API_BASE_URL', useValue: environment.API_BASE_URL },

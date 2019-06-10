@@ -8,7 +8,7 @@ body {
       font-size: 1em;
       line-height: 1.5em;
       
-    padding-top: 40px; /* Relleno superior igual a la altura de la cabecera*/
+      padding-top: 40px; /* Relleno superior igual a la altura de la cabecera*/
   }
 
   footer {
@@ -18,3 +18,8 @@ body {
 	padding: 20px;
 	margin-top: 40px;
   }
+
+  button {
+    /* padding: 1px 6px; */
+    margin-right: 4px;
+} 

@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
      // this.initModal();
+     console.log(window.screen.width);
   }
 
   initModal() {
@@ -39,7 +40,8 @@ export class HomeComponent implements OnInit {
   }
 
   cargarModal() {
-    const ref = this.dialog.open(ExampleComponent, { data: { message: 'I am a dynamic component inside of a dialog!' } });
+    const ref = this.dialog.open(ExampleComponent, { data: { message: 'I am a dynamic component inside of a dialog!' },
+    width: '30' });
 
     ref.afterClosed.subscribe(result => {
       console.log('Dialog closed', result);

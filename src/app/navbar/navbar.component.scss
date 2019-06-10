@@ -25,6 +25,17 @@ ul.topnav li.right {float: right;}
 @media screen and (max-width: 600px) {
   ul.topnav li.right, 
   ul.topnav li {float: none;}
+  nav {
+    margin-top: -40px;
+    position: unset;
+  }
+}
+
+@media screen and (min-width: 600px) {  
+  nav {    
+    position: fixed;
+    z-index: 1;
+  }
 }
 
 li {
@@ -39,5 +50,5 @@ nav {
   width: 100%; /* hacemos que la cabecera ocupe el ancho completo de la página */
 	left: 0; /* Posicionamos la cabecera al lado izquierdo */
 	top: 0; /* Posicionamos la cabecera pegada arriba */
-	position: fixed; /* Hacemos que la cabecera tenga una posición fija */
+	// position: fixed; /* Hacemos que la cabecera tenga una posición fija */
 }
