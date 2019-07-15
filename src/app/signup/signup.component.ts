@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Signup } from '../models/signup.model';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { AuthService } from '../services/auth.service';
 export class SignupComponent implements OnInit {
 
   title: any;
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private router: Router) { }
   ngOnInit() {
   }
 
@@ -31,6 +32,12 @@ export class SignupComponent implements OnInit {
       error => {
         console.log('oops', error.error);
       }); */
-    this.auth.signupUser(user);
+    this.auth.signupUser(user).subscribe(
+      data => {this.router.navigate(['/login']);
+    },
+    error => {
+      console.log('Error');
+    }
+    );
   }
 }

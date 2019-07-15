@@ -16,7 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(private auth: AuthService, public fb: FormBuilder) {
     this.myForm = fb.group({
       email: ['', [Validators.required,
-      Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      // Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')
+    ]],
       password: ['', [Validators.required, Validators.minLength(6), Validators.pattern('[A-Za-z0-9!?-]{6,30}')]]
     });
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { UserProfile } from '../models/userProfile.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +14,7 @@ export class ProfileComponent implements OnInit {
   profileArray: any[];
 
 
-  constructor(public auth: AuthService) {}
+  constructor(public auth: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.getUserProfile();
@@ -27,8 +28,13 @@ export class ProfileComponent implements OnInit {
                 // this.auth.setUserProfile(this.userProfile);
      },
       error => {
-        console.log('oops', error.error);
-        // this.datos = error.error;
+        if (error.status === 403) {
+        alert('No tiene permisos para acceder a esta página');
+        this.router.navigate(['']);
+      } else {
+        alert('Error desconocido');
+      }
+
       });
   }
 

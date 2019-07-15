@@ -15,7 +15,11 @@ import { DialogComponent } from './dialog/dialog.component';
 import { ExampleComponent } from './example/example.component';
 import { DialogModule } from './dialog/dialog.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { ScrollTopComponent } from './scroll-top/scroll-top.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+library.add(fas);
 
 @NgModule({
   declarations: [
@@ -25,7 +29,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     ProfileComponent,
     NavbarComponent,
-    ExampleComponent
+    ExampleComponent,
+    ScrollTopComponent
   ],
   imports: [
     BrowserModule,
@@ -34,14 +39,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AdminModule,
     DialogModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [
     { provide: 'API_BASE_URL', useValue: environment.API_BASE_URL },
     AuthService
   ],
   entryComponents: [
-    ExampleComponent
+    ExampleComponent,
+    LoginComponent
   ],
   bootstrap: [AppComponent]
 })

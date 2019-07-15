@@ -1,7 +1,7 @@
 <section class="container">
   <div class="card">
     <div class="card-body">
-      <form [formGroup]="myForm" (submit)="saveData()" novalidate="">   <!-- (submit)="loginUser($event)" -->
+      <form [formGroup]="myForm" (submit)="loginUser($event)" novalidate="">   <!-- (submit)="saveData()" -->
         <input  formControlName="email" type="email" placeholder="Email" id="email" />
         <div *ngIf="myForm.get('email').errors && myForm.get('email').dirty">
           <span *ngIf="myForm.get('email').hasError('required')">El Email es requerido</span>

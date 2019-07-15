@@ -20,10 +20,10 @@ export class AuthService {
 
   signupUser(user: Signup) {
 
-    return this.http.post(this.baseUrl + 'api/account', user)
-      .subscribe(
+    return this.http.post(this.baseUrl + 'api/accounts', user);
+     /*  .subscribe(
         data => this.router.navigate(['/login'])
-      );
+      ); */
   }
 
   loginUser(user: Login) {
@@ -49,6 +49,7 @@ export class AuthService {
     localStorage.removeItem('id_token');
     localStorage.removeItem('auth_token');
     localStorage.removeItem('expires_at');
+    return this.loggedIn;
   }
 
   getUserProfile(): Observable<UserProfile> {
@@ -76,9 +77,29 @@ export class AuthService {
   } */
 
   isLoggedIn() {
+    const time = parseInt(localStorage.getItem('expires_at'), 10);
+    const dateNow = Date.now();
+    console.log(time);
+    if (time != null) {
+      if (dateNow < time) {
+        this.getUserIsLogedin();
+        this.loggedIn = true;
+      } else {
+        this.logout();
+      }
+    }
 
     return this.loggedIn;
   }
+
+  getUserIsLogedin() {
+    const authToken = localStorage.getItem('auth_token');
+    this.http.get<User>(this.baseUrl + 'api/profile/user', { headers: new HttpHeaders({ Authorization: 'Bearer ' + authToken }) })
+        .subscribe(data => {
+         this.user = data;
+        });
+  }
+
 
   getUser() {
 
