@@ -4,6 +4,7 @@ import { InsertionDirective } from './insertion.directive';
 import { Subject } from 'rxjs';
 import { DialogRef } from './dialog.ref';
 import { DialogConfig } from './dialog.config';
+// import { config } from 'e2e/protractor.conf';
 
 @Component({
   selector: 'app-dialog',
@@ -28,6 +29,7 @@ export class DialogComponent implements AfterViewInit, OnDestroy {
               private dialogRef: DialogRef, private config: DialogConfig, private renderer: Renderer2 ) {
                 this.width = config.widthPer;
                 this.widthpx = config.widthpx;
+                // this.permitircc.
             }
 
   ngAfterViewInit() {
@@ -37,7 +39,9 @@ export class DialogComponent implements AfterViewInit, OnDestroy {
   }
 
   onOverlayClicked(evt: MouseEvent) {
+    if (this.config.permitirCerrar === 1) {
     this.dialogRef.close();
+    }
   }
 
   onDialogClicked(evt: MouseEvent) {
