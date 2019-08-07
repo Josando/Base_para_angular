@@ -1,9 +1,9 @@
 import { Component, Type, OnDestroy, AfterViewInit, ViewChild, ChangeDetectorRef, ComponentFactoryResolver,
   ComponentRef, Renderer2, ElementRef } from '@angular/core';
-import { InsertionDirective } from './insertion.directive';
+import { InsertionDirective } from '../directive/insertion.directive';
 import { Subject } from 'rxjs';
-import { DialogRef } from './dialog.ref';
-import { DialogConfig } from './dialog.config';
+import { DialogRef } from '../dialog.ref';
+import { DialogConfig } from '../dialog.config';
 // import { config } from 'e2e/protractor.conf';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { DialogService } from '../dialog/dialog.service';
+import { DialogService } from '../dialog/service/dialog.service';
 import { ExampleComponent } from '../example/example.component';
 import { PercentPipe } from '@angular/common';
 import { LoginComponent } from '../login/login.component';
@@ -12,13 +12,14 @@ import { LoginComponent } from '../login/login.component';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+  text = 'Angular 5\nfoo';
+  enabled = true;
   isLogedin: boolean;
 
   constructor(private auth: AuthService, private dialog: DialogService ) {}
 
   ngOnInit() {
-    this.isLoggedIn();
+    // this.isLoggedIn();
     console.log(window.screen.width);
   }
 
@@ -32,12 +33,12 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  isLoggedIn() {
+  /* isLoggedIn() {
     this.isLogedin = this.auth.isLoggedIn();
   }
 
   logout() {
     this.isLogedin = this.auth.logout();
 
-  }
+  } */
 }

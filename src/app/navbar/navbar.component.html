@@ -2,8 +2,12 @@
 <ul class="topnav">
   <li><a  routerLinkActive="active" routerLink="home">Home</a></li>
   <li><a routerLinkActive="active" routerLink="/admin">Admin</a></li>
-  <li class="right"><a routerLinkActive="active" routerLink="/login">Login</a>
-  <li class="right"><a routerLinkActive="active" routerLink="/signup">Signup</a>
-  </li>
+  <li><a routerLinkActive="active" routerLink="/listado">Listado</a></li>
+  <li class="right" *ngIf="(isLogedin$ | async) === false"><a routerLinkActive="active" routerLink="/login">Login</a></li>
+  <li class="right" *ngIf="(isLogedin$ | async) === true"><a routerLinkActive="active" href="" (click)="logout()">Logout</a></li>
+  <li class="right" *ngIf="(isLogedin$ | async) === false"><a routerLinkActive="active" routerLink="/signup">Signup</a></li>
+  <li class="right" *ngIf="(isLogedin$ | async) === true"><a routerLinkActive="active" href="" >{{(users$ | async)?.name}}</a></li>
 </ul>
+ {{isLogedin$ | async}}
+ {{(users$ | async)?.name}}
 </nav>

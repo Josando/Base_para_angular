@@ -1,9 +1,9 @@
 import { Injectable, ComponentFactoryResolver, ApplicationRef, Injector, Type, EmbeddedViewRef, ComponentRef } from '@angular/core';
-import { DialogModule } from './dialog.module';
-import { DialogComponent } from './dialog.component';
-import { DialogInjector } from './dialog.injector';
-import { DialogConfig } from './dialog.config';
-import { DialogRef } from './dialog.ref';
+import { DialogModule } from '../dialog.module';
+import { DialogComponent } from '../component/dialog.component';
+import { DialogInjector } from '../dialog.injector';
+import { DialogConfig } from '../dialog.config';
+import { DialogRef } from '../dialog.ref';
 
 @Injectable({
   providedIn: DialogModule

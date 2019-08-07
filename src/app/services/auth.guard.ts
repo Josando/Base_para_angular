@@ -6,7 +6,7 @@ import { User } from '../models/user.model';
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  user: User;
+  // user: User;
 
   constructor(private auth: AuthService, private router: Router) { }
 
@@ -21,8 +21,10 @@ export class AuthGuard implements CanActivate {
       console.log(privileges);
 
       if (privileges != null) {
-        this.user = this.auth.getUser();
-        const roles = this.user.roles;
+
+        // this.user = this.auth.getUser();
+        // const roles = this.user.roles;
+        const roles = this.auth.getUserRol();
         console.log(roles);
 
         const privileg = privileges.filter((rol: string) =>

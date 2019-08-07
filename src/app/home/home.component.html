@@ -23,3 +23,13 @@
 <button type="button" class="btn btn-success">Success</button>
 <button type="button" class="btn btn-danger">Danger</button>
 </div>
+<!-- Prueba de content editable mediante directiva -->
+<label><input type="checkbox" [(ngModel)]="enabled"> Enabled</label>
+
+<div appContentEditable="true" [(ngModel)]="text" [disabled]="!enabled" #ctrl="ngModel"></div>
+
+Pristine: {{ ctrl.pristine }}<br />
+Touched: {{ ctrl.touched }}<br />
+Status: {{ ctrl.status }}<br />
+
+<pre [innerHTML]="text"></pre>

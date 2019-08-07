@@ -11,7 +11,6 @@ import { environment } from 'src/environments/environment';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminModule } from './admin/admin.module';
 import { NavbarComponent } from './navbar/navbar.component';
-import { DialogComponent } from './dialog/dialog.component';
 import { ExampleComponent } from './example/example.component';
 import { DialogModule } from './dialog/dialog.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,6 +18,10 @@ import { ScrollTopComponent } from './scroll-top/scroll-top.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { ContentEditableFormDirective } from './directives/content-editable-form.directive';
+import { PaginationComponent } from './pagination/pagination.component';
+import { ListadoComponent } from './listado/listado.component';
+
 library.add(fas);
 
 @NgModule({
@@ -30,7 +33,10 @@ library.add(fas);
     ProfileComponent,
     NavbarComponent,
     ExampleComponent,
-    ScrollTopComponent
+    ScrollTopComponent,
+    ContentEditableFormDirective,
+    PaginationComponent,
+    ListadoComponent
   ],
   imports: [
     BrowserModule,

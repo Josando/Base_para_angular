@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DialogService } from './dialog.service';
+import { DialogService } from '../service/dialog.service';
 
 describe('DialogService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
