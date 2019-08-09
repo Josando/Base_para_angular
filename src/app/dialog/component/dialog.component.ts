@@ -1,5 +1,7 @@
-import { Component, Type, OnDestroy, AfterViewInit, ViewChild, ChangeDetectorRef, ComponentFactoryResolver,
-  ComponentRef, Renderer2, ElementRef } from '@angular/core';
+import {
+  Component, Type, OnDestroy, AfterViewInit, ViewChild, ChangeDetectorRef, ComponentFactoryResolver,
+  ComponentRef, Renderer2, ElementRef, HostListener
+} from '@angular/core';
 import { InsertionDirective } from '../directive/insertion.directive';
 import { Subject } from 'rxjs';
 import { DialogRef } from '../dialog.ref';
@@ -13,24 +15,67 @@ import { DialogConfig } from '../dialog.config';
 })
 export class DialogComponent implements AfterViewInit, OnDestroy {
   componentRef: ComponentRef<any>;
-  // @ViewChild('dialogs') dialog: ElementRef;
+  @ViewChild('dialogs') dialog: ElementRef;
   @ViewChild(InsertionDirective)
   insertionPoint: InsertionDirective;
+  moving = false;
 
-   // tslint:disable-next-line:variable-name
-   private readonly _onClose = new Subject<any>();
-   public onClose = this._onClose.asObservable();
-   public width: number;
-   public widthpx: number;
+  // tslint:disable-next-line:variable-name
+  private readonly _onClose = new Subject<any>();
+  public onClose = this._onClose.asObservable();
+  public width: number;
+  public widthpx: number;
 
   childComponentType: Type<any>;
 
+  shift = {
+    x: 0,
+    y: 0
+  };
+
   constructor(private componentFactoryResolver: ComponentFactoryResolver, private cd: ChangeDetectorRef,
-              private dialogRef: DialogRef, private config: DialogConfig, private renderer: Renderer2 ) {
-                this.width = config.widthPer;
-                this.widthpx = config.widthpx;
-                // this.permitircc.
-            }
+              private dialogRef: DialogRef, private config: DialogConfig, private renderer: Renderer2, private elRef: ElementRef) {
+    this.width = config.widthPer;
+    this.widthpx = config.widthpx;
+    // this.permitircc.
+  }
+
+  startMove(e) {
+    if (this.config.draggable) {
+      const position = this.getPosition(e.currentTarget);
+      this.shift = {
+        x: e.pageX - position.left,
+        y: e.pageY - position.top
+      };
+      this.moving = true;
+    }
+  }
+
+  @HostListener('document:mousemove', ['$event'])
+  move(event: MouseEvent) {
+    if (this.moving) {
+      // Here I'm trying to access the parent element to set it's
+      // CSS properties. The mouse y position is being logged
+      // successfully, but the parent elements style is not being set.
+      this.renderer.setStyle(this.dialog.nativeElement, 'top', (event.clientY - this.shift.y) + 'px');
+      this.renderer.setStyle(this.dialog.nativeElement, 'left', (event.clientX - this.shift.x) + 'px');
+    }
+  }
+
+  @HostListener('document:mouseup')
+  stopMove() {
+    this.moving = false;
+  }
+
+  getPosition(elem) {
+    const box = elem.getBoundingClientRect();
+
+    return {
+      top: box.top + pageYOffset,
+      left: box.left + pageXOffset
+    };
+  }
+
 
   ngAfterViewInit() {
     // this.renderer.removeClass(this.dialog.nativeElement, 'dialog');
@@ -39,8 +84,8 @@ export class DialogComponent implements AfterViewInit, OnDestroy {
   }
 
   onOverlayClicked(evt: MouseEvent) {
-    if (this.config.permitirCerrar === 1) {
-    this.dialogRef.close();
+    if (this.config.permitirCerrar) {
+      this.dialogRef.close();
     }
   }
 

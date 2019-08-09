@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
   cargarModal() {
     const ref = this.dialog.open(ExampleComponent, { data: { message: 'I am a dynamic component inside of a dialog!' },
-    widthPer: '', widthpx: '', permitirCerrar: 1
+    widthPer: '', widthpx: '', draggable: true ,  permitirCerrar: true
      });
 
     ref.afterClosed.subscribe(result => {

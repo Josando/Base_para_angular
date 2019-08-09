@@ -110,11 +110,11 @@ export class AuthService {
     return rol;
   }
 
-  getUser() {
+  /* getUser() {
 
     this.usersSubject.next(this.user);
     return this.user;
-  }
+  } */
 
   private setSession(authResult) {
     const expiresAt = authResult.expires_in * 1000 + Date.now();
